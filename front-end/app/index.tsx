@@ -1,61 +1,63 @@
-import { Link } from "expo-router";
-import { Text, View, Image, ImageBackground,
-  FlatList, Dimensions, TouchableOpacity, ActivityIndicator } from "react-native";
+import { BACKGROUNDIMAGE, HEROLOGO } from "@/constants";
+import { styles } from "@/styles/HomeStyle";
 import { SafeAreaView, SafeAreaProvider } from "react-native-safe-area-context";
-import PostCard from "@/app/PostCard";
-import AddPost from "@/app/AddPost";
-import { PostData } from "@/interfaces";
-import React, { use, useEffect, useState } from "react";
-import { styles } from "@/styles/index";
+import { useRouter } from "expo-router";
 
+import { ImageBackground, 
+ View, Text, TouchableOpacity, 
+ Image } from "react-native";
 
-const index: React.FC = () => {
-  const [posts, setPosts] = useState<PostData[]>([]);
+import { Background } from "@react-navigation/elements";
 
-// fetch some starter posts
-  useEffect(() => {
-    const fetchPosts = async () => {
-      const response = await fetch("https://jsonplaceholder.typicode.com/posts");
-        const data = await response.json();
-        setPosts(data);
-      };
-    fetchPosts();
-  }, []);
+export default function index() {
+  const router = useRouter();
 
-  // Make sure this function exists here
-  const handleAddPost = (newPost: PostData) => {
-    setPosts([newPost, ...posts]);
-  };
-  
   return (
+    <SafeAreaProvider>
+        <SafeAreaView style={styles.container}>
+            <ImageBackground
+            source={BACKGROUNDIMAGE}
+            style={styles.backgroundImageContainer}
+            resizeMode="cover">
+                
+                <View style={styles.container}>
+                   {/* <View style={styles.logoContainer}>
+                        <Image source={HEROLOGO} />
+                    </View>*/}
+                    
+                   <View style={styles.container}>
+                        <Text style={styles.titleText}>SocialHub</Text>
+                        <View style={styles.container}>
+                        <Text style={styles.titleSubText}>Every post is a story.</Text>
+                        <Text style={styles.titleSubText}>Every story deserves to be heard.</Text>
+                    </View>
+                  </View>
 
-      <SafeAreaView style={styles.container}>
-          <Text style={styles.header}>Social Feed</Text>
+                     <View style={{ marginTop: 60, paddingHorizontal : 20}}>
+                        <View style={styles.buttonGroup}>
+                            <TouchableOpacity
+                             style={styles.buttonPrimary}
+                             onPress={() => router.push("/join")}>
 
-        <FlatList
-          data={posts}
-          keyExtractor={(item) => (item.id !== undefined ? item.id.toString() : Math.random().toString())}
-          renderItem={({ item }) => <PostCard {...item} />}
-          showsVerticalScrollIndicator={false}
-          />
+                                <Text style={{...styles.buttonPrimaryText, color: "black" }}>Join here</Text>
+                            </TouchableOpacity>
+                            
+                            <TouchableOpacity style={styles.buttonSecondary}
+                             onPress={() => router.push("/signin")}>
+                                <Text style={styles.buttonSecondaryText}>Sign In</Text>
+                            </TouchableOpacity>
+                        </View>
+                        
+                        <View style={styles.buttonGroupSubText}>
+                            <Text onPress={() => router.push("/Post")} 
+                            style={{...styles.buttonSecondaryText, color: "white"}}>Post
+                            </Text>
+                        </View>
 
-        <View style={styles.navLinks}>
-          <TouchableOpacity>
-            <Link href="/join">
-              <Text style={styles.navText}>Join here</Text>
-            </Link>
-          </TouchableOpacity>
-          <TouchableOpacity>
-            <Link href="/signin">
-              <Text style={styles.navText}>Sign In</Text>
-              </Link>
-            </TouchableOpacity>
-        </View>
-
-      {/* AddPost Component */}
-      <AddPost onAdd={handleAddPost} currentCount={posts.length} />
-      </SafeAreaView>
-  );
-};
-
-export default index;
+                    </View>
+                </View>
+            </ImageBackground>
+        </SafeAreaView>
+    </SafeAreaProvider>
+    );
+}
