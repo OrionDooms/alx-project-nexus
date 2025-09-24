@@ -9,50 +9,54 @@ import { ImageBackground,
 
 import { Background } from "@react-navigation/elements";
 
-export default function index() {
+export default function HomeScreen() {
   const router = useRouter();
 
   return (
     <SafeAreaProvider>
         <SafeAreaView style={styles.container}>
+            {/* Background Image */}
             <ImageBackground
             source={BACKGROUNDIMAGE}
             style={styles.backgroundImageContainer}
             resizeMode="cover">
                 
-                <View style={styles.container}>
-                   {/* <View style={styles.logoContainer}>
-                        <Image source={HEROLOGO} />
-                    </View>*/}
-                    
-                   <View style={styles.container}>
+                   <View style={styles.titleContainer}>
+                    {/* Title Section */}
                         <Text style={styles.titleText}>SocialHub</Text>
-                        <View style={styles.container}>
                         <Text style={styles.titleSubText}>Every post is a story.</Text>
                         <Text style={styles.titleSubText}>Every story deserves to be heard.</Text>
+                         {/* Logo Section */}
+                    <View style={styles.logoContainer}>
+                        <Image source={HEROLOGO} />
                     </View>
-                  </View>
+                    </View>                                     
 
-                     <View style={{ marginTop: 60, paddingHorizontal : 20}}>
+                    {/* Button Section */}
+                     <View>
                         <View style={styles.buttonGroup}>
+
+                            {/* Join Button */}
                             <TouchableOpacity
                              style={styles.buttonPrimary}
-                             onPress={() => router.push("/join")}>
-
-                                <Text style={{...styles.buttonPrimaryText, color: "black" }}>Join here</Text>
+                             onPress={() => router.push("/join")}
+                             >
+                                <Text style={styles.buttonPrimaryText}>Join here</Text>
                             </TouchableOpacity>
-                            
+
+                            {/* Sign In Button */}                            
                             <TouchableOpacity style={styles.buttonSecondary}
-                             onPress={() => router.push("/signin")}>
+                             onPress={() => router.push("/signin")}
+                             >
                                 <Text style={styles.buttonSecondaryText}>Sign In</Text>
                             </TouchableOpacity>
-                        </View>
+                       
                         
-                        <View style={styles.buttonGroupSubText}>
+                        <TouchableOpacity style={styles.buttonGroupSubText}>
                             <Text onPress={() => router.push("/Post")} 
                             style={{...styles.buttonSecondaryText, color: "white"}}>Post
                             </Text>
-                        </View>
+                        </TouchableOpacity>
 
                     </View>
                 </View>
