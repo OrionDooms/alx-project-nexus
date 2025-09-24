@@ -25,13 +25,17 @@ const { height } = Dimensions.get("window");
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    
+    backgroundColor: "#242834",
   },
   iconsection: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
     marginTop: 22
+  },
+  titleContainer: {
+    alignItems: "center",
+    marginVertical: SPACING.medium,
   },
   titleTextGroup: {
     marginTop: 20
