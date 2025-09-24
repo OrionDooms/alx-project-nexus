@@ -1,3 +1,4 @@
+import PostCard from "@/app/PostCard";
 import { StyleSheet } from "react-native";
 
 const styles = StyleSheet.create({
@@ -46,6 +47,41 @@ const styles = StyleSheet.create({
     fontSize: 16,
     color: "#81A1C1",
     fontWeight: "500",
+  },
+  backgroundImageContainer: {
+    flex: 1,
+    padding: 20,
+  },
+  topBar: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+    marginBottom: 20,
+  },
+  pageTitle: {
+    fontSize: 24,
+    fontWeight: "bold",
+    color: "#fff",
+  },
+  logoutButton: {
+    fontSize: 16,
+    color: "#ff4d4d",
+    fontWeight: "bold",
+  },
+  PostCard: {
+    backgroundColor: "rgba(255, 255, 255, 0.9)",
+    borderRadius: 10,
+    padding: 15,
+    marginBottom: 12,
+  },
+  postTitleAlt: {
+    fontSize: 18,
+    fontWeight: "bold",
+    marginBottom: 5,
+  },
+  postBodyAlt: {
+    fontSize: 14,
+    color: "#333",
   },
 });
 
