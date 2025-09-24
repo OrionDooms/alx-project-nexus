@@ -53,25 +53,6 @@ export default function SignIn() {
           <Text style={styles.buttonText}>Create</Text>
         </TouchableOpacity>
 
-        <View style={styles.dividerGroup}>
-          <View style={styles.divider}></View>
-          <Text style={styles.dividerText}>OR</Text>
-          <View style={styles.divider}></View>
-        </View>
-
-        <View style={styles.secondaryButtonGroup}>
-          <TouchableOpacity style={styles.secondaryButton}>
-            <Image source={GOOGLELOGO} />
-            <Text style={styles.secondaryButtonText}>Continue with Google</Text>
-            </TouchableOpacity>
-
-            <TouchableOpacity style={styles.secondaryButton}>
-            <Image source={FACEBOOKLOGO} />
-              <Text style={styles.secondaryButtonText}>
-                Continue with Facebook </Text>             
-          </TouchableOpacity>
-        </View>
-
         <View>
           <Text style={styles.signupTitleText}>Don't have an account?</Text>
           <Text style={[styles.signupTitleText, { color: "orange",
