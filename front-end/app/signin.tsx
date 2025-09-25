@@ -6,11 +6,20 @@ import { BACKGROUNDIMAGE} from "@/constants";
 import { useRouter } from "expo-router";
 import { useState } from "react";
 
-const handleSignIn = async (email: string, password: string) => {
+
+{/* Sign In Component */}
+export default function SignIn() {
+    const router = useRouter();
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+
+    {/* Handle Sign In Function */}
+    const handleSignIn = async (email: string, password: string) => {
   try {
     const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/auth/signin`, {
       method: 'POST', headers: {  
-        'Content-Type': 'application/json',
+        'Content-Type': 'application/json'
+        // Add other headers if needed
       },
       body: JSON.stringify({
         email,
@@ -27,12 +36,7 @@ const handleSignIn = async (email: string, password: string) => {
     console.error(error);
     // Handle error (e.g., show error message)
   }
-}
-
-export default function SignIn() {
-    const router = useRouter();
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
+};
 
     return (
     <SafeAreaProvider>
@@ -46,7 +50,8 @@ export default function SignIn() {
 
         {/* Main Container Section */}
         <View style={styles.iconsection}>
-          <Ionicons name="arrow-back" size={25} onPress={() => router.back()} />
+          <Ionicons name="arrow-back" size={25} color="#fff"
+          onPress={() => router.back()} />
         </View>
 
         <View style={styles.titleTextGroup}>
