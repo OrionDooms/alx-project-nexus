@@ -55,6 +55,7 @@ const index: React.FC = () => {
             <View style={styles.postCard}>
               <Text style={styles.postTitle}>{item.title}</Text>
               <Text style={styles.postBody}>{item.body}</Text>
+              <PostCard post={item} />
             </View>
           )}
           />
