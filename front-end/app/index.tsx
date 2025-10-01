@@ -51,12 +51,6 @@ export default function HomeScreen() {
                                 <Text style={styles.buttonSecondaryText}>Sign In</Text>
                             </TouchableOpacity>
                        
-                        
-                        <TouchableOpacity style={styles.buttonGroupSubText}>
-                            <Text onPress={() => router.push("/Post")} 
-                            style={{...styles.buttonSecondaryText, color: "white"}}>Post
-                            </Text>
-                        </TouchableOpacity>
 
                     </View>
                 </View>

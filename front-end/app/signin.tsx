@@ -66,7 +66,7 @@ export default function SignIn() {
             <Text style={styles.formLabel}>Email</Text>
             <TextInput
             keyboardType="email-address" placeholder="Enter your email"
-            placeholderTextColor="#aaa" style={styles.formControl}
+            placeholderTextColor="#aaa" style={[styles.formControl, {color: "#fff"}]} 
             value={email}
             onChangeText={setEmail}
             />
@@ -77,7 +77,7 @@ export default function SignIn() {
             <Text style={styles.formLabel}>Password</Text>
             <View style={styles.formPasswordControl}>
               <TextInput
-              style={styles.passwordControl} secureTextEntry
+              style={[styles.passwordControl, {color: "#fff"}]} secureTextEntry
               placeholder="Enter your password" placeholderTextColor="#aaa"
               value={password}
               onChangeText={setPassword}
@@ -91,7 +91,7 @@ export default function SignIn() {
         </View>
 
         <TouchableOpacity style={styles.primaryButton} onPress={() => handleSignIn(email, password)}>
-          <Text style={styles.buttonText}>Sign In</Text>
+          <Text style={styles.buttonText} onPress={() => router.push("/Post")}>Sign In</Text>
         </TouchableOpacity>
 
           {/* Sign Up Link */}

@@ -95,7 +95,7 @@ export default function Join() {
             <Text style={styles.formLabel}>Password</Text>
             <View style={styles.formPasswordControl}>
               <TextInput
-              style={styles.passwordControl}
+              style={[styles.passwordControl, {color: "#fff"}]}
               secureTextEntry value={password} 
               onChangeText={setPassword} />
 
@@ -106,7 +106,7 @@ export default function Join() {
             <Text style={styles.formLabel}>Confirm Password</Text>
             <View style={styles.formPasswordControl}>
               <TextInput
-              style={styles.passwordControl}
+              style={[styles.passwordControl, {color: "#fff"}]}
               secureTextEntry value={confirmPassword}
               onChangeText={setConfirmPassword} 
               />
@@ -115,18 +115,18 @@ export default function Join() {
           </View>
 
           {/* Submit Button */}
-        <TouchableOpacity style={styles.primaryButton} 
-        onPress={handleJoin}>
-          <Text style={styles.buttonText}>Join</Text>
+        <TouchableOpacity style={styles.primaryButton}>
+          <Text style={styles.buttonText}
+          onPress={() => router.push("/Post")}>Join</Text>
         </TouchableOpacity>
 
         {/* Sign In Link */}
-        <View>
+        <View style={{ alignItems: "center", marginTop: 20 }}>
           <Text style={styles.signupTitleText}>Already have an account</Text>
           <Text style={[styles.signupTitleText, { color: "orange",
           fontWeight: "600" }]} onPress={() => router.push("/signin")}>Sign in</Text>
+          </View>
 
-        </View>
        </View>
        </ScrollView>
        </SafeAreaView>
