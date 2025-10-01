@@ -1,27 +1,29 @@
 import { PostData } from "@/interfaces/index";
-import { styles } from "@/styles/index";
-import { Text, View, TouchableOpacity } from "react-native";
+import { Text, View, Image, TouchableOpacity } from "react-native";
+import React from "react";
+import{ styles } from "@/styles/_postCard";
+import Share from "@/app/share";
+import Comments from "./comments";
+import Likes from "./likes";
 
-interface PostCardProps extends PostData {}
+interface PostCardProps {
+  id: string;
+  user: string;
+  content: string;
+  image?: string;
+}
 
-const PostCard: React.FC<PostCardProps> = ({ id, title, body, userId }) => {
+export default function PostCard({ post }: { post: PostData }) {
   return (
-    <View style={styles.postCard}>
-      <Text style={styles.postTitle}>{title}</Text>
-      <Text style={styles.postBody}>{body}</Text>
-    <View style={styles.postActions}>
-      <TouchableOpacity>
-        <Text style={styles.actionText}>Like</Text>
-      </TouchableOpacity>
-      <TouchableOpacity>
-        <Text style={styles.actionText}>Comment</Text>
-      </TouchableOpacity>
-      <TouchableOpacity>
-        <Text style={styles.actionText}>Share</Text>
-      </TouchableOpacity>
-    </View>
-  </View>
-  );
-};
+    <View style={styles.Card}>
+      {/*<Text style={styles.title}>{post.title}</Text>
+      <Text style={styles.body}>{post.body}</Text>*/}
 
-export default PostCard;
+      <View style={styles.actions}>
+        <Likes postId={post.id ?? ""} />
+        <Comments postId={String(post.id ?? "")} />
+        <Share postId={String(post.id ?? "")} />
+      </View>
+    </View>
+  );
+}
